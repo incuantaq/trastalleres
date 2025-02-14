@@ -101,7 +101,7 @@ export async function getPostAndMorePosts(
     }`,
     preview,
   );
-  const entries = await fetchGraphQL(
+  /* const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
         preview ? "true" : "false"
@@ -112,9 +112,9 @@ export async function getPostAndMorePosts(
       }
     }`,
     preview,
-  );
+  ); */
   return {
     post: extractPost(entry),
-    morePosts: extractPostEntries(entries),
+    /* morePosts: extractPostEntries(entries), */
   };
 }
