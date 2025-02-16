@@ -9,10 +9,14 @@ export default function CoverImage({
   title,
   url,
   slug,
+  serviceType,
+  author,
 }: {
   title: string;
   url: string;
-  slug?: string;
+  slug: string;
+  serviceType: string;
+  author: any;
 }) {
   const image = (
     <ContentfulImage
@@ -30,7 +34,10 @@ export default function CoverImage({
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <Link  href={{
+          pathname: `/${serviceType}/${slug}`,
+          query: { author },
+      }} aria-label={title}>
           {image}
         </Link>
       ) : (
