@@ -3,6 +3,7 @@ import { getAllPosts } from "@/lib/api";
 import Carousel from '../components/Carousel';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import CoverImage from "./cover-image";
 
 function Intro() {
   return (
