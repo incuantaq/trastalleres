@@ -25,16 +25,6 @@ export default async function PostPage({
   params,
 }: {
   params: { slug: string};
-  queryParams: { 
-    param1?: string;
-    param2?: string;
-    myObject?: string;
-  },
-  searchParams: { 
-    param1?: string;
-    param2?: string;
-    myObject?: string;
-  }
 }) {
   return (
     <div className="container mx-auto px-5">
