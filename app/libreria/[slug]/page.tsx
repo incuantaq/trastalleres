@@ -52,7 +52,6 @@ export default async function PostPage({
         .
       </h2>
       <hr className="border-accent-2 mt-28 mb-24" />
-      {/* <MoreStories morePosts={morePosts} /> */}
     </div>
   );
 }

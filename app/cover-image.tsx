@@ -18,11 +18,6 @@ export default function CoverImage({
   serviceType: string;
   author: any;
 }) {
-  console.log("author", author)
-  console.log("author", author)
-  console.log("author", author)
-  console.log("author", author)
-  console.log("author", author)
   const image = (
     <ContentfulImage
       alt={`Cover Image for ${title}`}
@@ -38,7 +33,6 @@ export default function CoverImage({
 
   return (
     <div className="sm:mx-0">
-      {/* <Link href={`/${serviceType}/${slug}`} aria-label={title}> */}
       {slug ? (
         <Link  href={{
           pathname: `/${serviceType}/${slug}`,

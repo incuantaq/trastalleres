@@ -41,9 +41,6 @@ function PostPreview({
       <h3 className="text-2xl mb-1 leading-snug">
         {title}
       </h3>
-      {/* <div className="text-md mb-3">
-        <DateComponent dateString={date} />
-      </div> */}
       {/* <p className="text-lg leading-relaxed mb-4">{excerpt}</p> */}
       {author && <Avatar name={author.name} picture={author?.picture} />}
     </div>
