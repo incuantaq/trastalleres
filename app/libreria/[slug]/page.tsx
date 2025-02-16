@@ -1,9 +1,4 @@
 import Link from "next/link";
-import Avatar from "../../avatar";
-import Date from "../../date";
-import CoverImage from "../../cover-image";
-
-import { Markdown } from "@/lib/markdown";
 
 export async function generateStaticParams() {
   //const allPosts = await getAllPosts(false);
@@ -28,8 +23,6 @@ export async function generateStaticParams() {
 
 export default async function PostPage({
   params,
-  queryParams,
-  searchParams,
 }: {
   params: { slug: string};
   queryParams: { 
