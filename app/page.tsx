@@ -7,7 +7,7 @@ import CoverImage from "./cover-image";
 
 function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
+    <section className="flex-col flex items-center md:justify-between mt-16 mb-16 md:mb-12">
       <Carousel />
       <Hero />
       <About />
@@ -19,7 +19,6 @@ export default async function Page() {
   return (
     <div className="container mx-auto px-5">
       <Intro />
-      
     </div>
   );
 }
