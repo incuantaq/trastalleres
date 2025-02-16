@@ -8,6 +8,12 @@ export const metadata = {
   description: `This is a blog built with Next.js and ${CMS_NAME}.`,
 };
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 function Footer() {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
@@ -42,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" >
+    <html lang="en" className={inter.variable}>
       <body>
         <section className="min-h-screen">
           <Navbar/>
