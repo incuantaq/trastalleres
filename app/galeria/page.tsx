@@ -1,9 +1,10 @@
 import React from 'react';
-/* import { draftMode } from "next/headers"; */
+import { draftMode } from "next/headers";
+import { getAllPosts } from "@/lib/api";
 import MoreStories from "../../components/service/service";
-import { faker } from '@faker-js/faker';
+/* import { faker } from '@faker-js/faker'; */
 
-export function createRandomPost() {
+/* export function createRandomPost() {
   return {
     title: faker.book.title(), 
     coverImage: {
@@ -20,20 +21,20 @@ export function createRandomPost() {
     excerpt: "excerpt"
   };
 }
-
-const AboutPage: React.FC = () => {
-  /* const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled); */
-  const allPosts = faker.helpers.multiple(createRandomPost, {
+ */
+const AboutPage: React.FC = async () => {
+  const { isEnabled } = draftMode();
+  const allPosts = await getAllPosts(isEnabled);
+  /* const allPosts = faker.helpers.multiple(createRandomPost, {
     count: 10,
-  });
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+  }); */
+  /* const heroPost = allPosts[0];
+  const morePosts = allPosts.slice(1); */
 
 
   return (
     <>
-      <MoreStories morePosts={morePosts} ServiceType='Galería' />
+      <MoreStories posts={allPosts} serviceType='galeria' />
     </>
   );
 };

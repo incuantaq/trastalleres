@@ -1,11 +1,8 @@
 import Link from "next/link";
-
+import { getAllPosts } from "@/lib/api";
 import Carousel from '../components/Carousel';
 import Hero from '../components/Hero';
 import About from '../components/About';
-
-
-import { getAllPosts } from "@/lib/api";
 
 function Intro() {
   return (
