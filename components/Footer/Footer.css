@@ -5,6 +5,8 @@
     padding: 24px 12px 0px 12px;
     position: absolute;
     width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
 }
 .footer-socialIcons{
     display: flex;

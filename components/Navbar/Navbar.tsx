@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
         <Link href="/">
             <Image className="logo" src="/images/logo-trastalleres.png" alt="My Image" width={150} height={300} />
         </Link>
-        <ul className="flex nav-links">
+        <ul className="flex nav-links items-center">
           <li>
             <Link href="/galeria">
               <span className="text-black hover:text-gray-400 cursor-pointer">Galería</span>

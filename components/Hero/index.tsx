@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
             En Trastalleres Galería de Arte, nos dedicamos a promover propuestas artísticas emergentes, desde la escultura hasta la arquitectura. Fundada por Hugo Londoño, un apasionado coleccionista y dealer de arte, nuestra galería forma parte del Centro Comercial Mazuren desde hace 5 años. Nuestro objetivo es apoyar nuevas expresiones creativas y asesorar sobre la inversión en arte. En 2025, tenemos previsto realizar exposiciones definidas en el Centro Cultural de Cajicá, enriqueciendo aún más nuestra colección única.
           </p>
           <p>
-          <img src="/firma.webp" alt="Firma de Hugo Londoño" className="signature-image" />
+          <img src="/firma.png" alt="Firma de Hugo Londoño" className="signature-image" />
             <em>Hugo Londoño</em><br />
             Curador Director, Abogado
           </p>
