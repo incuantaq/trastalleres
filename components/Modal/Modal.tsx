@@ -10,16 +10,12 @@ interface ModalProps {
     artworkName: string;
     artistName: string;
     description: string;
+    date: string;
 }
 
-const Modal: React.FC<ModalProps> = ({
-    isOpen,
-    onClose,
-    imgSrc,
-    artworkName,
-    artistName,
-    description,
-}) => {
+const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
+    const { isOpen, onClose, imgSrc, artworkName, artistName, description, date } = ModalProps;
+    
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") onClose();
@@ -51,8 +47,6 @@ const Modal: React.FC<ModalProps> = ({
     return (
         <div className="modal" onClick={handleBackgroundClick} role="dialog" aria-modal="true">
             <div className="modal-content">
-                <button className="modal-close" onClick={onClose} aria-label="Close modal">X</button>
-
                 <figure className="modal-image">
                     <img className="modal-image_img" src={imgSrc} alt={`Image of the artwork ${artworkName}`} />
                 </figure>
@@ -61,6 +55,7 @@ const Modal: React.FC<ModalProps> = ({
                     <section className="modal-artist">
                         <h2>{artworkName}</h2>
                         <h3>{artistName}</h3>
+                        <p>{new Date(date).toLocaleString('es-CO', { month: 'long', year: 'numeric' })}</p>
                     </section>
 
                     <section className="modal-description">
