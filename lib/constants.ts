@@ -1,3 +1,3 @@
-export const EXAMPLE_PATH = "cms-contentful";
-export const CMS_NAME = "Contentful";
-export const CMS_URL = "https://www.contentful.com";
+export const SITE_NAME = "Trastalleres Galería";
+export const SITE_URL = "https://www.trastalleresgaleria.com";
+export const SITE_IMG = "https://www.trastalleres.com/images/galeria.jpg";

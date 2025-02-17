@@ -29,7 +29,6 @@ const Carousel: React.FC<ImageCarouselProps> = ({ images }) => {
   if (!images || images.length === 0) {
     return <div>Loading...</div>; // Or some other placeholder
   }
-
   return (
     <div className="carousel-container">
       <div className="carousel-wrapper">
@@ -74,11 +73,11 @@ const Carousel: React.FC<ImageCarouselProps> = ({ images }) => {
         })}
       </div>
       <div className="flex flex-col-reverse md:flex-col absolute pb-2 inset-x-0 bottom-0 max-w-lg my-0 mx-auto">
-            <p className="text-xl/2 md:text-xl/8 text-gray-700 text-center">Behind the Rail Park there are people. Real People.</p>
-            <h2 className="mt-2 text-2xl md:text-4xl font-semibold tracking-tight text-pretty text-gray-900 text-center">We're on a mission to bring Rail Park to life.</h2>
+            <p className="text-xl/2 md:text-xl/8 text-gray-700 text-center">Detrás de Trastalleres, hay pasión. Pasión por el arte.</p>
+            <h2 className="mt-2 text-2xl md:text-4xl font-light tracking-tight text-pretty text-gray-900 text-center">Nuestra Misión: Impulsar el Arte Emergente</h2>
         </div>
     </div>
   );
-};
+}
 
 export default Carousel;
