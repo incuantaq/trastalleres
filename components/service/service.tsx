@@ -81,8 +81,9 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
               onClose={() => setIsModalOpen(false)}
               imgSrc={selectedPost.coverImage.url} 
               artworkName={selectedPost.title}
-              artistName="artistName"
-              description="description"
+              artistName={selectedPost.author.name}
+              description={selectedPost.excerpt}
+              date={selectedPost.date}
             />
         )}
     </section>

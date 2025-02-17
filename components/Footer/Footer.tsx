@@ -42,10 +42,10 @@ const Footer: React.FC = () => {
       </div>
       <div className='footer-socialIcons'>
         <a className='icon' href="https://www.facebook.com/Trastalleresgaleria/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} />
+          <FontAwesomeIcon icon={faFacebook} height={15} />
         </a>
         <a className='icon' href="https://www.instagram.com/trastalleresgaleria/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} />
+          <FontAwesomeIcon icon={faInstagram} height={15} />
         </a>
       </div>
     </footer>
