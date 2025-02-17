@@ -23,14 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>
-        <section className="min-h-screen relative min-h-screen">
-          <div className="pb-12">
-            <Navbar/>
-            <main>{children}</main>
-          </div>
-          <Footer />
-        </section>
+      <body className="min-h-screen relative min-h-screen">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

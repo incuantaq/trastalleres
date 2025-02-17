@@ -2,7 +2,6 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/api";
 import Carousel from '../components/Carousel';
 import Hero from '../components/Hero';
-import About from '../components/About';
 import CoverImage from "./cover-image";
 
 // Simulate fetching images from an API (replace with your actual data fetching)
@@ -31,7 +30,6 @@ export default async function Page() { // Note: async function!
     <section className="flex-col items-center md:justify-between px-16 md:px-12">
       <Carousel images={images} />
       <Hero />
-      <About />
     </section>
   );
 }
