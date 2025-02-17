@@ -26,6 +26,10 @@
   width: 100%;
   height: auto;
 }
+.signature-image {
+  width: 25%;
+  height: auto;
+}
 
 .hero h2 {
   font-size: 2rem;
