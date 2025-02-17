@@ -1,8 +1,8 @@
-import Link from "next/link";
-import Avatar from "../../app/avatar";
-import DateComponent from "../../app/date";
-import CoverImage from "../../app/cover-image";
-import ErrorHandler from "../ErrorHandler/ErrorHandler";
+"use client"
+import { useState } from "react";
+import ErrorHandler from "../ErrorHandler/ErrorHandler"; 
+import PostPreview from '../PostPreview/PostPreview';
+import Modal from "@/components/Modal/Modal";
 
 type ServiceKeys = 'libreria' | 'galeria';
 
@@ -31,39 +31,21 @@ type Post = {
   slug: string;
 };
 
-function PostPreview({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-  serviceType,
-}: {
-  title: string;
-  coverImage: any;
-  date: string;
-  excerpt: string;
-  author: any;
-  slug: string;
-  serviceType: ServiceKeys;
-}) {
-  return (
-    <div>
-      <div className="mb-1 md:mb-2">
-        <CoverImage title={title} slug={slug} author={author} serviceType={serviceType} url={coverImage.url} />
-      </div>
-      <h3 className="text-2xl mb-1 leading-snug">
-        {title}
-      </h3>
-      {/* <p className="text-lg leading-relaxed mb-4">{excerpt}</p> */}
-      {author && <Avatar name={author.name} picture={author?.picture} />}
-    </div>
-  );
-}
 
 export default function Service({ posts, serviceType }: { posts: Post[] | null; serviceType: ServiceKeys }) {
   const { serviceTitle, serviceDescription } = serviceInfo[serviceType];
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+
+  const openModal = (post: Post) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedPost(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <section className="px-16 md:px-20 py-14">
@@ -74,25 +56,34 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
         {serviceDescription}
       </span>
       {!posts || posts.length === 0 ? (
-          <ErrorHandler
-            message="Oops! Estamos preparando nuevo contenido para ti"
-          />
-        ) : (
-          <div className="grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-3 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
-              { posts.map((post) => (
-                  <PostPreview
-                    key={post.slug}
-                    title={post.title}
-                    coverImage={post.coverImage}
-                    date={post.date}
-                    author={post.author}
-                    slug={post.slug}
-                    excerpt={post.excerpt}
-                    serviceType={serviceType}
-                  />
-              ))
-            }
-          </div>
+        <ErrorHandler message="Oops! Estamos preparando nuevo contenido para ti" />
+      ) : (
+        <div className="grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-3 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
+          {posts.map((post) => (
+            <PostPreview
+              key={post.slug}
+              title={post.title}
+              coverImage={post.coverImage}
+              date={post.date}
+              author={post.author}
+              slug={post.slug}
+              excerpt={post.excerpt}
+              serviceType={serviceType}
+              onClick={() => openModal(post)}
+            />
+          ))}
+        </div>
+      )}
+
+        {isModalOpen && selectedPost && (
+            <Modal 
+              isOpen={true} 
+              onClose={() => setIsModalOpen(false)}
+              imgSrc={selectedPost.coverImage.url} 
+              artworkName={selectedPost.title}
+              artistName="artistName"
+              description="description"
+            />
         )}
     </section>
   );
