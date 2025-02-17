@@ -9,7 +9,6 @@ type ServiceKeys = 'libreria' | 'galeria';
 interface PostPreviewProps {
   title: string;
   coverImage: { url: string };
-  date: string;
   excerpt: string;
   author: { name: string; picture: string };
   slug: string;
@@ -20,7 +19,6 @@ interface PostPreviewProps {
 function PostPreview({
   title,
   coverImage,
-  date,
   excerpt,
   author,
   slug,

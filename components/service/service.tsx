@@ -22,7 +22,6 @@ type Post = {
   coverImage: {
     url: string;
   };
-  date: string;
   excerpt: string;
   author: {
     name: string;
@@ -64,7 +63,6 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
               key={post.slug}
               title={post.title}
               coverImage={post.coverImage}
-              date={post.date}
               author={post.author}
               slug={post.slug}
               excerpt={post.excerpt}
@@ -81,9 +79,8 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
               onClose={() => setIsModalOpen(false)}
               imgSrc={selectedPost.coverImage.url} 
               artworkName={selectedPost.title}
-              artistName={selectedPost.author.name}
+              artistName={selectedPost.author}
               description={selectedPost.excerpt}
-              date={selectedPost.date}
             />
         )}
     </section>

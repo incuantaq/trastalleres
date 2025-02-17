@@ -9,7 +9,7 @@ export default function Avatar({
 }) {
   return (
     <div className="flex items-center">
-      <div className="mr-4 w-12 h-12">
+      {/* <div className="mr-4 w-12 h-12">
         {
           picture && 
           <ContentfulImage
@@ -20,7 +20,7 @@ export default function Avatar({
             src={picture.url}
           />
         }
-      </div>
+      </div> */}
       <div className="text-md font-bold"> por {name}</div>
     </div>
   );

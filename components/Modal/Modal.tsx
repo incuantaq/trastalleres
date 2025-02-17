@@ -10,11 +10,10 @@ interface ModalProps {
     artworkName: string;
     artistName: string;
     description: string;
-    date: string;
 }
 
 const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
-    const { isOpen, onClose, imgSrc, artworkName, artistName, description, date } = ModalProps;
+    const { isOpen, onClose, imgSrc, artworkName, artistName, description } = ModalProps;
     
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -55,7 +54,6 @@ const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
                     <section className="modal-artist">
                         <h2>{artworkName}</h2>
                         <h3>{artistName}</h3>
-                        <p>{new Date(date).toLocaleString('es-CO', { month: 'long', year: 'numeric' })}</p>
                     </section>
 
                     <section className="modal-description">

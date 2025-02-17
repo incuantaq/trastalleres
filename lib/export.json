@@ -247,16 +247,6 @@
           "linkType": "Asset"
         },
         {
-          "id": "date",
-          "name": "Date",
-          "type": "Date",
-          "localized": false,
-          "required": true,
-          "validations": [],
-          "disabled": false,
-          "omitted": false
-        },
-        {
           "id": "author",
           "name": "Author",
           "type": "Link",
@@ -398,11 +388,6 @@
         {
           "fieldId": "coverImage",
           "widgetId": "assetLinkEditor",
-          "widgetNamespace": "builtin"
-        },
-        {
-          "fieldId": "date",
-          "widgetId": "datePicker",
           "widgetNamespace": "builtin"
         },
         {
