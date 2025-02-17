@@ -24,6 +24,7 @@ nav {
     gap: 1rem;
     margin: 0;
     padding: 0;
+    align-items: center;
     li {
         margin: 0;
     }
@@ -37,14 +38,15 @@ a {
 }
 
 .contact-link {
-    background-color: #25d366;
+    background-color: #535453;
     padding: 0.5rem 1rem;
     border-radius: 4px;
+    color: #fff;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     gap: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     &:hover {
-        background-color: #128c7e;
+        background-color: #8d8f8f;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 }
