@@ -1,0 +1,130 @@
+/* Container that holds the entire carousel */
+.carousel-container {
+    position: relative;
+    width: auto;   /* Adjust as needed */
+    height: 400px;  /* Adjust as needed */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+  /* Wrapper that helps position slides absolutely on top of each other */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px; /* Enables 3D transforms */
+}
+
+  /* Common slide styles */
+.carousel-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;  /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+    z-index: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+  /* Principal (center) slide */
+.slide-center {
+    z-index: 3;
+    transform: translate(-50%, -60%) scale(1) rotateY(0deg);
+}
+
+  /* Immediate right slide */
+.slide-right {
+    z-index: 2;
+    transform: translate(-50%, -50%) translateX(300px) rotateY(-20deg) rotateZ(15deg) scale(0.9);
+    opacity: 0.9;
+}
+
+  /* Far right slide */
+.slide-right-far {
+    z-index: 1;
+    transform: translate(-50%, -25%) translateX(550px) rotateY(-30deg) rotateZ(30deg) scale(0.8);
+    opacity: 0.7;
+}
+
+  /* Immediate left slide */
+.slide-left {
+    z-index: 2;
+    transform: translate(-50%, -50%) translateX(-300px) rotateY(20deg) rotateZ(-15deg) scale(0.9);
+    
+    opacity: 0.9;
+}
+
+  /* Far left slide */
+.slide-left-far {
+    z-index: 1;
+    transform: translate(-50%, -25%) translateX(-550px) rotateY(30deg) rotateZ(-30deg) scale(0.8);
+    opacity: 0.7;
+}
+
+  /* Hidden slides (those not in the range of -2..2 from current) */
+.slide-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+  /* Navigation buttons */
+.carousel-button {
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 200%;
+    top: 50%;
+    transform: translateY(-75%);
+    background-color:transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    z-index: 4;
+    font-weight: bold;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+.carousel-button:focus {
+    outline: none;
+}
+
+.carousel-button:hover {
+    background-color:none;
+    border: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .slide-right-far,.slide-left-far {
+        display: none;
+    }
+    .carousel-container {
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 550px) {
+    .slide-right,.slide-left{
+        display: none;
+    }
+    .carousel-button {
+        display: block;
+    }
+}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Avatar from "../../app/avatar";
 import DateComponent from "../../app/date";
 import CoverImage from "../../app/cover-image";
-import ErrorHandler from "../ErrorHandler/ErrorHandler";
+import ErrorHandler from "../ErrorHandler";
 
 type ServiceKeys = 'libreria' | 'galeria';
 
