@@ -16,12 +16,12 @@ const Navbar: React.FC = () => {
         <ul className="flex nav-links">
           <li>
             <Link href="/galeria">
-              <span className="text-black hover:text-gray-800 cursor-pointer">Galería</span>
+              <span className="text-black hover:text-gray-400 cursor-pointer">Galería</span>
             </Link>
           </li>
           <li>
             <Link href="/libreria">
-              <span className="text-black hover:text-gray-300 cursor-pointer">Librería</span>
+              <span className="text-black hover:text-gray-400 cursor-pointer">Librería</span>
             </Link>
           </li>
           <li>
