@@ -28,7 +28,7 @@ export default async function Page() { // Note: async function!
   const images = await fetchImages();
 
   return (
-    <section className="flex-col  items-center md:justify-between p-16 md:p-12">
+    <section className="flex-col items-center md:justify-between px-16 md:px-12">
       <Carousel images={images} />
       <Hero />
       <About />

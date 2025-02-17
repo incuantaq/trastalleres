@@ -2,7 +2,7 @@
 .carousel-container {
     position: relative;
     width: auto;   /* Adjust as needed */
-    height: 400px;  /* Adjust as needed */
+    height: 500px;  /* Adjust as needed */
     margin: 0 auto;
     overflow: hidden;
 }
@@ -18,7 +18,7 @@
   /* Common slide styles */
 .carousel-slide {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     width: 300px;  /* Adjust as needed */
     height: 300px; /* Adjust as needed */

@@ -3,7 +3,7 @@ import './Hero.css';
 
 const Hero: React.FC = () => {
   return (
-    <div className="hero">
+    <div className="hero mt-10">
       <div className="hero-content">
         <div className="hero-column">
           <img src="/image.png" alt="Hero Image" className="hero-image" />
