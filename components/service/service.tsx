@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import ErrorHandler from "../ErrorHandler/ErrorHandler"; 
+import ErrorHandler from "../ErrorHandler"; 
 import PostPreview from '../PostPreview/PostPreview';
 import Modal from "@/components/Modal/Modal";
 

@@ -5,7 +5,7 @@ const msg = "Hugo Londoño abogado, amante del arte y de las expresiones artíst
 
 const Hero: React.FC = () => {
   return (
-    <div className="hero">
+    <div className="hero mt-10">
       <div className="hero-content">
         <div className="hero-column">
           <img src="/image.png" alt="Hero Image" className="hero-image" />
