@@ -23,10 +23,7 @@ type Post = {
     url: string;
   };
   excerpt: string;
-  author: {
-    name: string;
-    picture: string;
-  };
+  author: string;
   slug: string;
 };
 
