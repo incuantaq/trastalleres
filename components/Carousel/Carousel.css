@@ -4,9 +4,10 @@
     height: 500px;
     margin: 0 auto;
     overflow: hidden;
-    /* background:
+    background:
         linear-gradient(to bottom, #a5cbe0, transparent),
-        url(https://grainy-gradients.vercel.app/noise.svg); */
+        url(https://grainy-gradients.vercel.app/noise.svg);
+    filter: contrast(170%) brightness(1000%); 
 }
 
 /* Wrapper that helps position slides absolutely on top of each other */
