@@ -60,8 +60,8 @@ const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
 
                 <div className="modal-info">
                     <section className="modal-artist">
-                        <h2>{artworkName}</h2>
-                        <h3>{artistName}</h3>
+                        <h3 className="">{artworkName}</h3>
+                        <h4>{artistName}</h4>
                     </section>
 
                     <section className="modal-description">

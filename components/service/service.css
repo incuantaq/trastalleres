@@ -1,0 +1,10 @@
+
+.posts-container > div {
+  border: 2px solid transparent; /* Default border for children */
+}
+
+/* Alternating border colors for children */
+.posts-container > div:nth-child(7n+1) > div { border-color: #75103A; }
+.posts-container > div:nth-child(7n+2) > div { border-color: #99D7F7; }
+.posts-container > div:nth-child(7n+3) > div { border-color: #004B6B; }
+.posts-container > div:nth-child(7n+4) > div { border-color: #004B6B; }

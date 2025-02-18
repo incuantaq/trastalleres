@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   const whatsappUrl = "https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Tengo%20una%20pregunta";
   
   return (
-    <div className="hero">
+    <div className="hero my-10 mx-8 md:mx-16 md:mx-12">
       <div className="hero-content">
         <div className="hero-column">
           <img src="/curador.png" alt="Hugo Londoño, curador de Trastalleres" className="hero-image" />
