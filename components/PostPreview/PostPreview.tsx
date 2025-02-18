@@ -1,7 +1,6 @@
 // components/PostPreview.tsx (with next/link)
 "use client";
 
-import Avatar from "../../app/avatar";
 import CoverImage from "../../app/cover-image";
 
 type ServiceKeys = 'libreria' | 'galeria';
@@ -27,13 +26,13 @@ function PostPreview({
 }: PostPreviewProps) {
   return (
     <div onClick={onClick}>
-      <div className="mb-1 md:mb-2 cursor-pointer">
+      <div className="border-2 mb-1 md:mb-2 cursor-pointer">
         <CoverImage title={title} slug={slug} author={author} serviceType={serviceType} url={coverImage.url} />
       </div>
-      <h3 className="text-2xl mb-1 leading-snug cursor-pointer">
+      <h3 className="text-2xl mb-1 leading-snug cursor-pointer text-[#75103A]">
         {title}
       </h3>
-      {author && <Avatar name={author} />}
+      <span className="text-[#7f7579]">{author}</span>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import ErrorHandler from "../ErrorHandler"; 
 import PostPreview from '../PostPreview/PostPreview';
 import Modal from "@/components/Modal/Modal";
+import "./service.css"
 
 type ServiceKeys = 'libreria' | 'galeria';
 
@@ -54,10 +55,10 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
       {!posts || posts.length === 0 ? (
         <ErrorHandler message="Oops! Estamos preparando nuevo contenido para ti" />
       ) : (
-        <div className="grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-4 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
-          {posts.map((post) => (
+        <div className="posts-container grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-4 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
+          {posts.map((post, idx) => (
             <PostPreview
-              key={post.slug}
+              key={idx}
               title={post.title}
               coverImage={post.coverImage}
               author={post.author}
