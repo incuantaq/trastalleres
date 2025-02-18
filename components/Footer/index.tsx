@@ -12,9 +12,9 @@ const Footer: React.FC = () => {
           <h2 className='footer-name_text'>Trastalleres</h2>
           <address className='footer-info'>
             <ul>
-              <li>Galeria y libreria</li>
-              <li>125 Calle av bogota 123</li>
-              <li>+57 3004444444</li>
+              <li>Galería y librería</li>
+              <li>C.C. Mazuren Local 249 - Bogotá</li>
+              <li>+57 3102104501</li>
             </ul>
           </address>
         </section>
