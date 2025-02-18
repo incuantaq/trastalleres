@@ -32,6 +32,8 @@ function extractPost(fetchResponse: any): any {
 }
 
 function extractPostEntries(fetchResponse: any): any[] {
+  const woof = fetchResponse?.data?.pinturaCollection?.items || fetchResponse?.data?.bookCollection?.items
+  console.log("woof", woof)
   return fetchResponse?.data?.pinturaCollection?.items || fetchResponse?.data?.bookCollection?.items;
 }
 
@@ -53,9 +55,7 @@ type CollectionType = 'book' | 'pintura';
 export async function getAllPosts(isDraftMode: boolean, collectionType: CollectionType): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
-      ${collectionType}Collection( preview: ${
-        isDraftMode ? "true" : "false"
-      }) {
+      ${collectionType}Collection( preview: false) {
         items {
           ${POST_GRAPHQL_FIELDS}
         }
