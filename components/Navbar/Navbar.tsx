@@ -25,8 +25,8 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex contact-link cursor-pointer" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              Contáctanos <FontAwesomeIcon icon={faWhatsapp} height={25} />
+            <Link className="flex contact-link cursor-pointer" href={whatsappUrl} target="_blank" rel="noopener noreferrer" style={{display: 'flex', alignItems: 'center', maxWidth: '8rem'}}>
+              Contáctanos <FontAwesomeIcon icon={faWhatsapp} height={12} />
             </Link>
           </li>
         </ul>

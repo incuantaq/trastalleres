@@ -9,8 +9,15 @@ export default async function Page() {
   const images = allPosts.reduce((acc, {coverImage})=> [...acc, coverImage.url], [])
 
   return (
-    <section className="flex-col items-center md:justify-between px-8 md:px-16 md:px-12">
-      {images.length && <Carousel images={images} />}
+    <section
+      style={{
+      background: `
+        linear-gradient(to bottom, #a5cbe0, transparent),
+        url(https://grainy-gradients.vercel.app/noise.svg)
+      `,
+      }}
+    >
+      <Carousel images={images} />
       <Hero />
     </section>
   );
