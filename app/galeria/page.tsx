@@ -5,7 +5,7 @@ import MoreStories from "../../components/service/service";
 
 const AboutPage: React.FC = async () => {
   const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled);
+  const allPosts = await getAllPosts(isEnabled, 'pintura');
 
   return (
     <>

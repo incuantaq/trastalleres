@@ -9,9 +9,8 @@ type ServiceKeys = 'libreria' | 'galeria';
 interface PostPreviewProps {
   title: string;
   coverImage: { url: string };
-  date: string;
   excerpt: string;
-  author: { name: string; picture: string };
+  author: string;
   slug: string;
   serviceType: ServiceKeys;
   onClick: () => void;
@@ -20,7 +19,6 @@ interface PostPreviewProps {
 function PostPreview({
   title,
   coverImage,
-  date,
   excerpt,
   author,
   slug,
@@ -35,7 +33,7 @@ function PostPreview({
       <h3 className="text-2xl mb-1 leading-snug cursor-pointer">
         {title}
       </h3>
-      {author && <Avatar name={author.name} picture={author?.picture} />}
+      {author && <Avatar name={author} />}
     </div>
   );
 }

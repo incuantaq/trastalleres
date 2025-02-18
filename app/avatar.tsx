@@ -2,14 +2,13 @@ import ContentfulImage from "@/lib/contentful-image";
 
 export default function Avatar({
   name,
-  picture,
 }: {
   name: string;
-  picture: any;
 }) {
   return (
     <div className="flex items-center">
-      <div className="mr-4 w-12 h-12">
+      {/* keeping this in case we want to go back to author pic feature */}
+      {/* <div className="mr-4 w-12 h-12">
         {
           picture && 
           <ContentfulImage
@@ -20,7 +19,7 @@ export default function Avatar({
             src={picture.url}
           />
         }
-      </div>
+      </div> */}
       <div className="text-md font-bold"> por {name}</div>
     </div>
   );

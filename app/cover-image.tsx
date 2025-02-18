@@ -17,7 +17,7 @@ export default function CoverImage({
   url: string;
   slug: string;
   serviceType: string;
-  author: any;
+  author: string;
 }) {
   return (
       <ContentfulImage

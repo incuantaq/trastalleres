@@ -22,12 +22,8 @@ type Post = {
   coverImage: {
     url: string;
   };
-  date: string;
   excerpt: string;
-  author: {
-    name: string;
-    picture: string;
-  };
+  author: string;
   slug: string;
 };
 
@@ -58,13 +54,12 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
       {!posts || posts.length === 0 ? (
         <ErrorHandler message="Oops! Estamos preparando nuevo contenido para ti" />
       ) : (
-        <div className="grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-3 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
+        <div className="grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-4 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
           {posts.map((post) => (
             <PostPreview
               key={post.slug}
               title={post.title}
               coverImage={post.coverImage}
-              date={post.date}
               author={post.author}
               slug={post.slug}
               excerpt={post.excerpt}
@@ -81,9 +76,9 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
               onClose={() => setIsModalOpen(false)}
               imgSrc={selectedPost.coverImage.url} 
               artworkName={selectedPost.title}
-              artistName={selectedPost.author.name}
+              artistName={selectedPost.author}
               description={selectedPost.excerpt}
-              date={selectedPost.date}
+              serviceType={serviceType}
             />
         )}
     </section>

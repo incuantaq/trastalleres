@@ -1,32 +1,12 @@
 const POST_GRAPHQL_FIELDS = `
-  slug
   title
   coverImage {
     url
   }
-  date
-  author {
-    name
-    picture {
-      url
-    }
-  }
+  author
   excerpt
-  content {
-    json
-    links {
-      assets {
-        block {
-          sys {
-            id
-          }
-          url
-          description
-        }
-      }
-    }
-  }
 `;
+
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
   return fetch(
@@ -52,7 +32,7 @@ function extractPost(fetchResponse: any): any {
 }
 
 function extractPostEntries(fetchResponse: any): any[] {
-  return fetchResponse?.data?.postCollection?.items;
+  return fetchResponse?.data?.pinturaCollection?.items || fetchResponse?.data?.bookCollection?.items;
 }
 
 export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
@@ -69,10 +49,11 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
   return extractPost(entry);
 }
 
-export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
+type CollectionType = 'book' | 'pintura';
+export async function getAllPosts(isDraftMode: boolean, collectionType: CollectionType): Promise<any[]> {
   const entries = await fetchGraphQL(
     `query {
-      postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
+      ${collectionType}Collection( preview: ${
         isDraftMode ? "true" : "false"
       }) {
         items {

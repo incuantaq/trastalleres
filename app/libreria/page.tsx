@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/api";
 
 const AboutPage: React.FC = async () => {
   const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled);
+  const allPosts = await getAllPosts(isEnabled, 'book');
 
   const morePosts = allPosts;
 
