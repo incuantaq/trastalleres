@@ -1,5 +1,5 @@
 .footer{
-    background-color: #000000;
+    background-color: #17243D;
     display: flex;
     flex-direction: column;
     padding: 24px 12px 0px 12px;
@@ -8,14 +8,24 @@
     margin-top: 20px;
     padding-top: 20px;
 }
-.footer-socialIcons{
+.footer-social-lower{
     display: flex;
     flex-direction: row;
-    padding: 0px 0px 0px 32px;
+    justify-content: space-between;
+    padding: 0px 32px;
     gap: 4px;
     border-top: 1px solid #7C7C7C;
 }
-
+.footer-social-lower--icons{
+    display: flex;
+    flex-direction: row;
+}
+.footer-social-lower--branding{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .footer-container{
     display: flex;
     flex-direction: row;    
@@ -31,12 +41,12 @@
     padding: 8px;
 }
 .footer-name_text{
-    font-weight: bold;
-    font-size: 1.5rem;
-    color:#75103A;
+    width: 200px;
+    height: auto;
+    margin: 0 5px;
 }
 .footer-info{
-    padding: 8px 0px 8px 8px;
+    padding: 8px 0px 8px 28px;
     color: #DCDCDC;
 }
 .footer-right{
@@ -91,35 +101,30 @@
     color: #DCDCDC;
 }
 
+.incuantaq-logo {
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+}
+
 @media (max-width: 500px) {
-    .footer{
-        padding: 0;
-        margin: 0;
-        gap: 0;
-    }
     .footer-left{
-        min-width: 210px;
-        padding-top: 0;
+        width: 100%;
+        padding: 20px;
     }
 
-    .footer-name{
-        padding: 0;
-    }
     .footer-info{
-        padding: 0;
+        padding-left: 30px;
     }
     
     .footer-container{
         flex-direction: column;
         align-items: center;
     }
-    .footer-right{
-        justify-content: center;
-    }
     .content{
         padding-top: 0;
     }
-    .footer-socialIcons{
+    .footer-social--icons{
         justify-content: center;
     }
     

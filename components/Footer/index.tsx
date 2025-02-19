@@ -9,7 +9,11 @@ const Footer: React.FC = () => {
     <footer className='footer'>
       <div className='footer-container'>
         <section className='footer-left'>
-          <h2 className='footer-name_text'>Trastalleres</h2>
+          <img
+              src="/images/logo-trastalleres-light-blue.png" 
+              alt="Trastalleres Galería Logo"
+              className="footer-name_text"
+            />
           <address className='footer-info'>
             <ul>
               <li>Galería y librería</li>
@@ -40,13 +44,24 @@ const Footer: React.FC = () => {
           </div>
         </section>
       </div>
-      <div className='footer-socialIcons'>
-        <a className='icon' href="https://www.facebook.com/Trastalleresgaleria/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} height={15} />
-        </a>
-        <a className='icon' href="https://www.instagram.com/trastalleresgaleria/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} height={15} />
-        </a>
+      <div className='footer-social-lower'>
+        <div className='footer-social-lower--icons'>
+          <a className='icon' href="https://www.facebook.com/Trastalleresgaleria/" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faFacebook} height={15} />
+          </a>
+          <a className='icon' href="https://www.instagram.com/trastalleresgaleria/" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faInstagram} height={15} />
+          </a>
+          
+        </div>
+        <div className='footer-social-lower--branding'>
+          Made with ❤ by 
+            <img
+              src="/images/incuantaq.png" 
+              alt="Incuantaq logo - page creators"
+              className="incuantaq-logo"
+            />
+        </div>
       </div>
     </footer>
   );
