@@ -22,7 +22,7 @@
     min-width: 340px;
 }
 .modal-image{
-    max-width: 400px;
+    max-width: 600px;
     max-height: auto;
     width: auto; 
     height: auto;
@@ -36,7 +36,7 @@
     object-fit: cover;
 }
 .modal-info{
-    width: 50%;
+    width: 300px;
     max-width: 600px; 
     padding: 16px;
     overflow: hidden;
@@ -56,6 +56,17 @@
 .modal-artist--author{
     margin-bottom: 10px;
     font-style: italic;
+}
+.modal-artist h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.modal-artist h3{
+    font-size: 1.4rem;
+}
+.modal-artist p{
+    font-size: 1rem;
+    opacity: 0.6;
 }
 .modal-description{
     margin-bottom: 10px;

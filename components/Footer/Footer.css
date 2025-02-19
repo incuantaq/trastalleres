@@ -108,19 +108,11 @@
 }
 
 @media (max-width: 500px) {
-    .footer{
-        padding: 0;
-        margin: 0;
-        gap: 0;
-    }
     .footer-left{
         width: 100%;
         padding: 20px;
     }
 
-    .footer-name{
-        padding: 0;
-    }
     .footer-info{
         padding-left: 30px;
     }

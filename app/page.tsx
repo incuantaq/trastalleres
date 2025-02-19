@@ -9,7 +9,7 @@ export default async function Page() {
   const images = allPosts.reduce((acc, {coverImage})=> [...acc, coverImage.url], [])
 
   return (
-    <section className="flex-col items-center md:justify-between">
+    <section className="flex-col items-center md:justify-between" >
       {images.length && <Carousel images={images} />}
       <Hero />
     </section>

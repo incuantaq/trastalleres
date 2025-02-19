@@ -8,7 +8,7 @@ import "./Navbar.css";
 const Navbar: React.FC = () => {
   const whatsappUrl = "https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Tengo%20una%20pregunta";
     return (
-    <nav className="bg-gray-200 p-1">
+    <nav className="bg-transparent p-1">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between max-h-[130px] max-h-16 my-1">
         <Link href="/">
             <Image className="logo" src="/images/logo-trastalleres.png" alt="Logo Trastalleres" width={200} height={150} />
@@ -25,8 +25,8 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex contact-link cursor-pointer justify-center" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              Contáctanos <FontAwesomeIcon icon={faWhatsapp} height={25} />
+            <Link className="flex contact-link cursor-pointer" href={whatsappUrl} target="_blank" rel="noopener noreferrer" style={{display: 'flex', alignItems: 'center', maxWidth: '8rem'}}>
+              Contáctanos <FontAwesomeIcon icon={faWhatsapp} height={12} />
             </Link>
           </li>
         </ul>
