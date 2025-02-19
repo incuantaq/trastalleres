@@ -19,13 +19,13 @@ const Navbar: React.FC = () => {
               <span className="text-black hover:text-gray-400 cursor-pointer">Galería</span>
             </Link>
           </li>
-          <li>
+          <li className="justify-center">
             <Link href="/libreria">
-              <span className="text-black hover:text-gray-400 cursor-pointer">Librería</span>
+              <span className="text-black hover:text-gray-400 cursor-pointer justify-center">Librería</span>
             </Link>
           </li>
           <li>
-            <Link className="flex contact-link cursor-pointer" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <Link className="flex contact-link cursor-pointer justify-center" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               Contáctanos <FontAwesomeIcon icon={faWhatsapp} height={25} />
             </Link>
           </li>

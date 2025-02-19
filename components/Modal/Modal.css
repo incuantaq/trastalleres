@@ -38,8 +38,6 @@
 .modal-info{
     width: 50%;
     max-width: 600px; 
-    height: 200px;
-    max-height: 90vh;
     padding: 16px;
     overflow: hidden;
     display: flex;
@@ -49,9 +47,19 @@
 }
 .modal-artist{
     margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+.modal-artist--title{
+    font-size: 25px;
+}
+.modal-artist--author{
+    margin-bottom: 10px;
+    font-style: italic;
 }
 .modal-description{
     margin-bottom: 10px;
+    min-height: 100px;
 }
 .modal-buy{
     display: flex;

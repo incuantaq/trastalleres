@@ -60,8 +60,8 @@ const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
 
                 <div className="modal-info">
                     <section className="modal-artist">
-                        <h3 className="">{artworkName}</h3>
-                        <h4>{artistName}</h4>
+                        <h3 className="modal-artist--title">{artworkName}</h3>
+                        <h4 className="modal-artist--author">{artistName}</h4>
                     </section>
 
                     <section className="modal-description">
@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
                     </section>
 
                     <section className="modal-buy">
-                        <span className="modal-buy_text">Comprar </span>
+                        <span className="modal-buy_text">Compra aquí: </span>
                         <a className="contact-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                             Contacta <FontAwesomeIcon icon={faWhatsapp} />
                         </a>
