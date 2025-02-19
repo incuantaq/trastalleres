@@ -45,17 +45,17 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
   };
 
   return (
-    <section className="px-16 md:px-20 py-14">
+    <section className="py-8 md:py-14 mx-[15%]">
       <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
         {serviceTitle}
       </h2>
-      <span className="text-2xl md:text-2xl tracking-tighter">
+      <span className="text-2xl pb-2 md:pt-1 md:text-2xl tracking-tighter">
         {serviceDescription}
       </span>
       {!posts || posts.length === 0 ? (
         <ErrorHandler message="Oops! Estamos preparando nuevo contenido para ti" />
       ) : (
-        <div className="posts-container grid grid-cols-1 md:40 grid-cols-1 md:grid-cols-4 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 py-6">
+        <div className="posts-container">
           {posts.map((post, idx) => (
             <PostPreview
               key={idx}

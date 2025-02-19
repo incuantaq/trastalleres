@@ -1,10 +1,18 @@
 
-.posts-container > div {
-  border: 2px solid transparent; /* Default border for children */
+.posts-container  {
+  column-count: 3;
+  -moz-column-gap: 10px;
+  -webkit-column-gap: 10px;
+  column-gap: 10px;
+  margin: 0 auto;
 }
 
-/* Alternating border colors for children */
-.posts-container > div:nth-child(7n+1) > div { border-color: #75103A; }
-.posts-container > div:nth-child(7n+2) > div { border-color: #99D7F7; }
-.posts-container > div:nth-child(7n+3) > div { border-color: #004B6B; }
-.posts-container > div:nth-child(7n+4) > div { border-color: #004B6B; }
+@media (max-width: 500px) {
+  .posts-container  {
+    column-count: 1;
+    -moz-column-gap: 10px;
+    -webkit-column-gap: 10px;
+    column-gap: 10px;
+    margin: 0 auto;
+  }
+}

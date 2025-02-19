@@ -25,8 +25,8 @@ function PostPreview({
   onClick,
 }: PostPreviewProps) {
   return (
-    <div onClick={onClick}>
-      <div className="border-2 mb-1 md:mb-2 cursor-pointer">
+    <div onClick={onClick} className="inline-block my-[15px] md:m-[10px]">
+      <div className="rounded-sm mb-1 md:mb-2 cursor-pointer drop-shadow-[0_10px_10px_rgba(0,0,0,0.4)] pb-2">
         <CoverImage title={title} slug={slug} author={author} serviceType={serviceType} url={coverImage.url} />
       </div>
       <h3 className="text-2xl mb-1 leading-snug cursor-pointer text-[#75103A]">

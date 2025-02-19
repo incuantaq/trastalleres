@@ -9,9 +9,9 @@ const Navbar: React.FC = () => {
   const whatsappUrl = "https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Tengo%20una%20pregunta";
     return (
     <nav className="bg-gray-200 p-1">
-      <div className="container mx-auto flex items-center justify-between max-h-16 my-1">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between max-h-[130px] max-h-16 my-1">
         <Link href="/">
-            <Image className="logo" src="/images/logo-trastalleres.png" alt="My Image" width={200} height={150} />
+            <Image className="logo" src="/images/logo-trastalleres.png" alt="Logo Trastalleres" width={200} height={150} />
         </Link>
         <ul className="flex nav-links items-center">
           <li>

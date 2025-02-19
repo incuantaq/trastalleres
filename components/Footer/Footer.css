@@ -33,7 +33,7 @@
 .footer-name_text{
     font-weight: bold;
     font-size: 1.5rem;
-    color:#75103A;
+    color:#99D7F7;
 }
 .footer-info{
     padding: 8px 0px 8px 8px;
@@ -98,8 +98,9 @@
         gap: 0;
     }
     .footer-left{
-        min-width: 210px;
-        padding-top: 0;
+        width: 100%;
+        padding: 20px;
+        align-items: center;
     }
 
     .footer-name{
