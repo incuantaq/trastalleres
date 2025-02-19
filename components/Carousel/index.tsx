@@ -74,7 +74,7 @@ const Carousel: React.FC<ImageCarouselProps> = ({ images }) => {
       </div>
       <div className="flex flex-col-reverse md:flex-col absolute pb-2 inset-x-0 bottom-0 max-w-lg my-0 mx-auto">
             <p className="text-xl/2 md:text-xl/8 text-gray-700 text-center">En Trastalleres, nuestra pasión por el arte da vida a obras únicas y diferentes.</p>
-            <h2 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-pretty text-gray-900 text-center text-[#75103A]">Obras por encargo, <br></br>Arte por inversión y diversión.</h2>
+            <h2 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-pretty text-gray-900 text-center text-[#75103A]">Obras por encargo, Arte por inversión y diversión.</h2>
         </div>
     </div>
   );

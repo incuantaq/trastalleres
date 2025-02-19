@@ -49,7 +49,7 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
       <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
         {serviceTitle}
       </h2>
-      <span className="text-2xl pb-2 md:pt-1 md:text-2xl tracking-tighter">
+      <span className="text-2xl pb-2 md:pt-1 md:text-2xl tracking-tighter pb-2">
         {serviceDescription}
       </span>
       {!posts || posts.length === 0 ? (
