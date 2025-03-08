@@ -17,12 +17,12 @@ interface ModalProps {
 const whatsappItemMessage = {
     libreria: "%C3%A9ste%20libro%3A%20",
     galeria: "%C3%A9sta%20pieza%20de%20arte%3A%20",
-} 
+}
 
-const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
+const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
     const { isOpen, onClose, imgSrc, artworkName, artistName, description, serviceType } = ModalProps;
 
-    
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") onClose();
@@ -46,6 +46,23 @@ const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
             onClose();
         }
     };
+    
+    async function createPreference() {
+        let data: any | null = null;
+        try {
+            const response = await fetch("/api/preference", {
+            method: "POST",
+          });
+           data = await response.json();
+          console.log("Preference created:", data);
+        } catch (error) {
+          console.error("Error creating preference:", error);
+        }
+        finally {
+            if(data?.init_point)
+            window.open(data.sandbox_init_point, "_blank");
+        }
+      }
 
     const whatsappUrl = `https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20${whatsappItemMessage[serviceType]}%20${artworkName}%0AArtist:%20${artistName}`;
 
@@ -73,6 +90,7 @@ const Modal: React.FC<ModalProps> = (ModalProps : ModalProps) => {
                         <a className="contact-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                             Contacta <FontAwesomeIcon icon={faWhatsapp} />
                         </a>
+                        <button onClick={createPreference}>Mercado pago</button>
                     </section>
                 </div>
             </div>
