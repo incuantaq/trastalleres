@@ -1,52 +1,39 @@
 import MercadoPagoConfig, { Preference } from "mercadopago";
-import { PreferenceRequest } from "mercadopago/dist/clients/preference/commonTypes";
 
-export const mercadopago = new MercadoPagoConfig({accessToken:'APP_USR-8032147249459451-030313-a1f63fc55f96020361ac61924df52a5f-2303819126'});
+const mercadopago = new MercadoPagoConfig({accessToken:'APP_USR-8032147249459451-030313-a1f63fc55f96020361ac61924df52a5f-2303819126'});
 
 export async function POST() {
-    // const url = "https://api.mercadopago.com/checkout/preferences/";
-    MercadoPagoConfig
-
-    const data:PreferenceRequest = {
+    const data: any = {
+      statement_descriptor: 'TestStore',
+      binary_mode: false,
+      external_reference: 'IWD1238971',
       items: [
         {
-          title: "Book The Art of War",
-          quantity: 1,
-          unit_price: 10,
-          id: "1234aaa",
-        },
+            id: '123456',
+            title: 'Mi Librito xD',
+            quantity: 1,
+            unit_price: 15000,
+            description: 'Un librito bien bonito',
+            category_id: 'retail'
+        }
       ],
-      // back_urls: {
-      //   success: "https://trastalleres.com/success",
-      //   failure: "https://trastalleres.com/failure",
-      //   pending: "https://trastalleres.com/pending",
-      // },
-      // payment_methods: {
-      //   excluded_payment_methods: [
-      //     {
-      //       id: "amex",
-      //     },
-      //   ],
-      //   excluded_payment_types: [
-      //     {
-      //       id: "atm",
-      //     },
-      //   ],
-      //   installments: 6,
-      // },
-      // notification_url: "https://trastalleres.com/notifications",
-      // auto_return: "approved",
+      payment_methods: {
+        excluded_payment_types: [],
+        excluded_payment_methods: [],
+        installments: 12,
+        default_payment_method_id: 'account_money'
+      },
+      redirect_urls: {
+        failure: '',
+        pending: '',
+        success: ''
+      },
+      notification_url: '',
+      expires: true,
+      // sandbox: true,
     };
 
     try {
-      // const response = await fetch(url, {
-      //   method: "POST",
-      //   headers: {
-      //     Authorization: "Bearer APP_USR-8032147249459451-030313-a1f63fc55f96020361ac61924df52a5f-2303819126",
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(data),
-      // });
       const preference = await new Preference(mercadopago).create({body: { ...data }})
 
       console.log("Response:", preference);
