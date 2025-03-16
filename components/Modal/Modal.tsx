@@ -34,8 +34,6 @@ const whatsappItemMessage = {
 const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
     const { isOpen, onClose, selectedBook } = ModalProps;
 
-    console.log("selectedBook", selectedBook);
-
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") onClose();

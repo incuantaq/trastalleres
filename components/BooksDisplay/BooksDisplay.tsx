@@ -27,12 +27,9 @@ export default function Service({  }: {  }) {
     return <div>Loading...</div>;
   }
 
-  const demo = [...contextValue]
-
-  console.log("contextValue", contextValue)
   return (
     <div className="posts-container">
-      {demo.map((post: Post, idx: Key | null | undefined) => (
+      {contextValue.map((post: Post, idx: Key | null | undefined) => (
         <SingleBook
           key={idx}
           title={post.title}

@@ -14,8 +14,6 @@ const decreaseStock = (metadata: any) => ({
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url)
 
-  console.log("searchParams.get(id)", searchParams.get("id"))
-
   const bookId = searchParams.get("id")
 
   try {
@@ -29,7 +27,6 @@ export async function GET(req: Request): Promise<Response> {
     const response = await metadata.json();
     
     const webhookMetadata = decreaseStock(response);
-    console.log("webhookMetadata", webhookMetadata);
     return new Response(JSON.stringify(webhookMetadata), { status: 200 });
   } catch (error) {
     
@@ -40,7 +37,6 @@ export async function GET(req: Request): Promise<Response> {
 }
 export async function POST(req: Request): Promise<Response> {
   const body = await req.json();
-  console.log("bodyyyy", body)
 
   try {
     return new Response("demo", { status: 200 });

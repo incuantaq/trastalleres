@@ -4,13 +4,6 @@ import { Preference } from "mercadopago";
 export async function POST(req: Request): Promise<Response> {
   const requestBody = await req.json(); 
   const { metadata, ...items} = requestBody;
-  console.log("asd123", metadata);
-  console.log("asd123", metadata);
-  console.log("asd123", metadata);
-  console.log("asd123", metadata);
-  console.log("asd123", metadata);
-  console.log("asd123", metadata);
-  console.log("ITEMS", items);
     const body: any = {
       "items": [items],
       "metadata": {
@@ -35,8 +28,6 @@ export async function POST(req: Request): Promise<Response> {
 
     try {
       const preference = await new Preference(mercadopago).create({ body })
-
-      console.log("Response:", preference);
 
       if (!preference) {
         throw new Error("Failed to create preference");

@@ -27,12 +27,9 @@ export async function POST(req: Request, res: Response) {
         Authorization: `Bearer ${process.env.MP_ACCESS_TOKEN}`,
       },
     });
-    console.log("response", response)
     if (response.ok) {
       const data : { metadata: {info: string}} = await response.json();
       const bookMetadata = JSON.parse(data.metadata.info);
-      console.log("PAYMENT SUCCESSFUL!!!", bookMetadata)
-      console.log("take info from metadata, update book")
 
       const demo = await fetch(`https://api.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries/${bookMetadata.sys.id}`, {
         method: "PUT",
@@ -43,8 +40,9 @@ export async function POST(req: Request, res: Response) {
         },
         body: JSON.stringify(bookMetadata), 
       });
+
+      console.log("shop updated", demo);
       
-      console.log("DEMO123", await demo.json())
     }
     
     return new Response(null, {status: 200}); 
