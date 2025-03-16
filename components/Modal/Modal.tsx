@@ -11,6 +11,7 @@ interface ModalProps {
     artworkName: string;
     artistName: string;
     description: string;
+    unitPrice: number;
     serviceType: ServiceKeys;
 }
 
@@ -20,8 +21,7 @@ const whatsappItemMessage = {
 }
 
 const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
-    const { isOpen, onClose, imgSrc, artworkName, artistName, description, serviceType } = ModalProps;
-
+    const { isOpen, onClose, imgSrc, artworkName, artistName, description, serviceType, unitPrice } = ModalProps;
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -52,17 +52,28 @@ const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
         try {
             const response = await fetch("/api/preference", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: "1AMgM0D8Io7LhpejVTVNUX",
+                title: `${artworkName} - ${artistName}`,
+                quantity: 1,
+                unit_price: 10000,
+                description,
+                currency_id: 'COP',
+            }),
           });
-           data = await response.json();
+          data = await response.json();
           console.log("Preference created:", data);
         } catch (error) {
           console.error("Error creating preference:", error);
         }
         finally {
             if(data?.init_point)
-            window.open(data.sandbox_init_point, "_blank");
+            window.open(data.init_point, "_blank");
         }
-      }
+    }
 
     const whatsappUrl = `https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20${whatsappItemMessage[serviceType]}%20${artworkName}%0AArtist:%20${artistName}`;
 

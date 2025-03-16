@@ -19,13 +19,23 @@ const serviceInfo = {
 }
 
 type Post = {
-  title: string;
-  coverImage: {
-    url: string;
-  };
-  excerpt: string;
-  author: string;
-  slug: string;
+  metadata: {
+    tags: string[],
+    concepts: string[],
+  },
+  sys: {
+    id: string,
+  },
+  fields: {
+    title: string;
+    coverImage: {
+      url: string;
+    };
+    excerpt: string;
+    author: string;
+    unitPrice: number;
+    slug: string;
+  }
 };
 
 
@@ -33,6 +43,8 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
   const { serviceTitle, serviceDescription } = serviceInfo[serviceType];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+
+  console.log("posts", posts);
 
   const openModal = (post: Post) => {
     setSelectedPost(post);
@@ -79,6 +91,7 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
               artworkName={selectedPost.title}
               artistName={selectedPost.author}
               description={selectedPost.excerpt}
+              unitPrice={selectedPost.unitPrice}
               serviceType={serviceType}
             />
         )}

@@ -5,6 +5,7 @@ const POST_GRAPHQL_FIELDS = `
   }
   author
   excerpt
+  unitPrice
 `;
 
 
@@ -32,8 +33,6 @@ function extractPost(fetchResponse: any): any {
 }
 
 function extractPostEntries(fetchResponse: any): any[] {
-  const woof = fetchResponse?.data?.pinturaCollection?.items || fetchResponse?.data?.bookCollection?.items
-  console.log("woof", woof)
   return fetchResponse?.data?.pinturaCollection?.items || fetchResponse?.data?.bookCollection?.items;
 }
 
@@ -65,6 +64,22 @@ export async function getAllPosts(isDraftMode: boolean, collectionType: Collecti
   );
   return extractPostEntries(entries);
 }
+
+export async function getAllPostsREST(isDraftMode: boolean, collectionType: CollectionType): Promise<any[]> {
+  return fetch(
+    `https://api.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?content_type=book`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.CONTENTFUL_BEARER_TOKEN}`,
+      },
+      next: { tags: ["postsDemo"] },
+    },
+  ).then((response) => response.json());
+}
+
+
 
 export async function getPostAndMorePosts(
   slug: string,

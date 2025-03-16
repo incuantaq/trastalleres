@@ -1,39 +1,30 @@
 import { mercadopago } from "@/app/utils";
 import { Preference } from "mercadopago";
 
-export async function POST() {
-    const data: any = {
-      statement_descriptor: 'TestStore',
-      binary_mode: false,
-      external_reference: 'IWD1238971',
-      items: [
-        {
-            id: '123456',
-            title: 'Mi Librito xD',
-            quantity: 1,
-            unit_price: 15000,
-            description: 'Un librito bien bonito',
-            category_id: 'retail'
-        }
-      ],
-      payment_methods: {
-        excluded_payment_types: [],
-        excluded_payment_methods: [],
-        installments: 12,
-        default_payment_method_id: 'account_money'
+export async function POST(req: Request): Promise<Response> {
+  const requestBody = await req.json(); 
+  console.log("requestBody", requestBody)
+    const body: any = {
+      "items": [ requestBody ],
+      "payment_methods": {
+          "excluded_payment_types": [],
+          "excluded_payment_methods": [],
+          "installments": 2,
+          "default_payment_method_id": "pse"
       },
-      redirect_urls: {
-        failure: '',
-        pending: '',
-        success: ''
+      /* "back_urls": {
+        "failure": 'http://localhost:3000/back-failure',
+        "pending": 'http://localhost:3000/back-pending',
+        "success": 'http://localhost:3000/back-success'
       },
-      notification_url: '',
-      expires: true,
-      // sandbox: true,
+      "auto_return": "approved",
+      */
+      "notification_url": "https://d0pr3j9j-3000.use2.devtunnels.ms/api/payment",
+      "expires": true,
     };
 
     try {
-      const preference = await new Preference(mercadopago).create({body: { ...data }})
+      const preference = await new Preference(mercadopago).create({ body })
 
       console.log("Response:", preference);
 
