@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
     <nav className="bg-transparent p-1">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between max-h-[130px] max-h-16 my-1">
         <Link href="/">
-            <Image className="logo" src="/images/logo-trastalleres.png" alt="Logo Trastalleres" width={200} height={150} />
+            <span>Librería Oculta</span>
         </Link>
         <ul className="flex nav-links items-center">
           <li>
