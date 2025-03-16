@@ -7,12 +7,23 @@ type ServiceKeys = 'libreria' | 'galeria';
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
-    imgSrc: string;
+    /* imgSrc: string;
     artworkName: string;
     artistName: string;
     description: string;
-    unitPrice: number;
-    serviceType: ServiceKeys;
+    unitPrice: number; */
+    selectedBook: {
+        author: string;
+        coverImage: {
+            url: string;
+        };
+        excerpt: string;
+        sys: {
+            id: string;
+        }
+        title: string;
+        unitPrice: number;
+    };
 }
 
 const whatsappItemMessage = {
@@ -21,7 +32,9 @@ const whatsappItemMessage = {
 }
 
 const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
-    const { isOpen, onClose, imgSrc, artworkName, artistName, description, serviceType, unitPrice } = ModalProps;
+    const { isOpen, onClose, selectedBook } = ModalProps;
+
+    console.log("selectedBook", selectedBook);
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -50,22 +63,28 @@ const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
     async function createPreference() {
         let data: any | null = null;
         try {
+            const metadataPromise = await fetch(`/api/metadata/?id=${selectedBook.sys.id}`, {
+                method: "GET",
+              });
+
+            const preferenceMetadata = await metadataPromise.json();
             const response = await fetch("/api/preference", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id: "1AMgM0D8Io7LhpejVTVNUX",
-                title: `${artworkName} - ${artistName}`,
-                quantity: 1,
-                unit_price: 10000,
-                description,
-                currency_id: 'COP',
-            }),
-          });
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id: "1AMgM0D8Io7LhpejVTVNUX",
+                    title: `${selectedBook.title} - ${selectedBook.author}`,
+                    quantity: 1,
+                    unit_price: 3000,
+                    description: selectedBook.excerpt,
+                    currency_id: 'COP',
+                    metadata: preferenceMetadata
+                }),
+            });
           data = await response.json();
-          console.log("Preference created:", data);
+          /* console.log("Preference created:", data); */
         } catch (error) {
           console.error("Error creating preference:", error);
         }
@@ -75,7 +94,7 @@ const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
         }
     }
 
-    const whatsappUrl = `https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20${whatsappItemMessage[serviceType]}%20${artworkName}%0AArtist:%20${artistName}`;
+    const whatsappUrl = `https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20${whatsappItemMessage.libreria}%20${selectedBook.title}%0AArtist:%20${selectedBook.author}`;
 
     if (!isOpen) return null;
 
@@ -83,17 +102,17 @@ const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
         <div className="modal" onClick={handleBackgroundClick} role="dialog" aria-modal="true">
             <div className="modal-content">
                 <figure className="modal-image">
-                    <img className="modal-image_img" src={imgSrc} alt={`Image of the artwork ${artworkName}`} />
+                    <img className="modal-image_img" src={selectedBook.coverImage.url} alt={`Image of the artwork ${selectedBook.title}`} />
                 </figure>
 
                 <div className="modal-info">
                     <section className="modal-artist">
-                        <h3 className="modal-artist--title">{artworkName}</h3>
-                        <h4 className="modal-artist--author">{artistName}</h4>
+                        <h3 className="modal-artist--title">{selectedBook.title}</h3>
+                        <h4 className="modal-artist--author">{selectedBook.author}</h4>
                     </section>
 
                     <section className="modal-description">
-                        <p>{description}</p>
+                        <p>{selectedBook.excerpt}</p>
                     </section>
 
                     <section className="modal-buy">

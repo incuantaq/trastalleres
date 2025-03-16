@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { SITE_NAME, SITE_URL, SITE_IMG } from "@/lib/constants";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
+import { BooksContextProvider } from "@/context/itemsContext";
 
 export const metadata = {
   title: SITE_NAME,
@@ -45,7 +46,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen relative min-h-screen">
         <Navbar />
-        <main>{children}</main>
+          <BooksContextProvider>
+            <main>{children}</main>
+          </BooksContextProvider>
         <Footer />
       </body>
     </html>

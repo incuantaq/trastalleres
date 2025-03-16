@@ -1,0 +1,15 @@
+
+.posts-container  {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+@media (max-width: 500px) {
+  .posts-container  {
+    column-count: 1;
+    -moz-column-gap: 10px;
+    -webkit-column-gap: 10px;
+    column-gap: 10px;
+    margin: 0 auto;
+  }
+}

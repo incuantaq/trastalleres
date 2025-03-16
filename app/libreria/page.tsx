@@ -1,23 +1,19 @@
+"use client"; // This ensures the component can use hooks
+
 import React from 'react';
-import { draftMode } from "next/headers";
+import { useBooksContext } from "@/context/itemsContext";
 import MoreStories from "../../components/service/service";
-import { getAllPosts, getAllPostsREST } from "@/lib/api";
 
-const AboutPage: React.FC = async () => {
-  const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled, 'book');
-  const allPostsREST = await getAllPostsREST(isEnabled, 'book');
+const Demo: React.FC = () => {
+    const contextValue = useBooksContext();
 
-  console.log("ALL POSTS", JSON.stringify(allPosts))
-  console.log("ALL POSTS REST", JSON.stringify(allPostsREST))  
+    if (!contextValue) {
+        return <div>Loading...</div>; 
+    }
 
-  const morePosts = allPosts;
-
-  return (
-    <>
-      <MoreStories posts={morePosts} serviceType='libreria' />
-    </>
-  );
+    return (
+      <MoreStories posts={contextValue} serviceType='libreria' />
+    );
 };
 
-export default AboutPage;
+export default Demo;

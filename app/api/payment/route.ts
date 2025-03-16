@@ -1,6 +1,22 @@
+import { metadata } from "@/app/layout";
 import { mercadopago } from "@/app/utils";
 import {Payment} from "mercadopago";
 
+
+async function updateSingleItem(query: string, preview = false): Promise<any> {
+  return fetch(
+    `https://api.contentful.com/content/v1/spaces/zvuvf4y77x2g`, //ENV???
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer uvvGbLFSkRPXOH3-pURBIb2H5e4KJxWTTilhywVcA4w`, //ENV???
+      },
+      body: JSON.stringify({ query }),
+      next: { tags: ["posts"] },
+    },
+  ).then((response) => response.json());
+}
 
 export async function POST(req: Request, res: Response) {
   const body: {data: {id: string, type: string}} = await req.json();
@@ -13,22 +29,22 @@ export async function POST(req: Request, res: Response) {
     });
     console.log("response", response)
     if (response.ok) {
-      const data : { metadata: {}} = await response.json();
-      console.log(data.metadata)
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
-      console.log("PAYMENT SUCCESSFUL!!!")
+      const data : { metadata: {info: string}} = await response.json();
+      const bookMetadata = JSON.parse(data.metadata.info);
+      console.log("PAYMENT SUCCESSFUL!!!", bookMetadata)
       console.log("take info from metadata, update book")
+
+      const demo = await fetch(`https://api.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries/${bookMetadata.sys.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.CONTENTFUL_BEARER_TOKEN}`,
+          "X-Contentful-Version": bookMetadata?.sys.version,
+        },
+        body: JSON.stringify(bookMetadata), 
+      });
+      
+      console.log("DEMO123", await demo.json())
     }
     
     return new Response(null, {status: 200}); 
@@ -38,31 +54,3 @@ export async function POST(req: Request, res: Response) {
     return new Response(null, {status: 500}); 
   }
 }
-
-
-
-/* export async function POST(request: Request) {
-  // const body: {data: {id: string}} = await request.json();
-
-  console.log("Request:", request);
-  const body: {data: {id: string}} = await request.json();
-
-  const payment = await new Payment(mercadopago).get({id: body.data.id});
-  console.log("Payment:", payment);
-  const payment = await new Payment(mercadopago).get({id: body.data.id});
-
-  if (payment.status === "approved") {
-    console.log("Approved Payment:", payment);
-    // await api.message.add({id: payment.id!, text: payment.metadata.text});
-
-    // Revalidamos la página de inicio para mostrar los datos actualizados
-    // revalidatePath("/");
-  }
-  console.log("Noo Payment:", payment);
-
-
-  // Respondemos con un estado 200 para indicarle que la notificación fue recibida
-  return new Response(null, {status: 200}); 
-}
- */
-

@@ -1,17 +1,24 @@
+"use client";
+//TODO: move this client component down in deps tree
 import { getAllPosts } from "@/lib/api";
 import Carousel from '../components/Carousel';
 import { draftMode } from "next/headers";
 import Hero from '../components/Hero';
+import { useBooksContext } from "@/context/itemsContext";
+import MoreStories from '../components/service/service';
+
 
 export default async function Page() {
-  const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled, 'pintura');
-  const images = allPosts.reduce((acc, {coverImage})=> [...acc, coverImage.url], [])
+  const contextValue = useBooksContext();
 
+  if (!contextValue) {
+    return <div>Loading...</div>;
+  }
   return (
-    <section className="flex-col items-center md:justify-between" >
-      {images.length && <Carousel images={images} />}
-      <Hero />
-    </section>
+      <section className="flex-col items-center md:justify-between" >
+        <MoreStories posts={contextValue} serviceType='libreria' />
+        <Hero />
+      </section>
+    
   );
 }

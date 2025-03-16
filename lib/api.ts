@@ -1,3 +1,4 @@
+
 const POST_GRAPHQL_FIELDS = `
   title
   coverImage {
@@ -6,21 +7,20 @@ const POST_GRAPHQL_FIELDS = `
   author
   excerpt
   unitPrice
+  sys {
+    id
+  }
 `;
 
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
   return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+    `https://graphql.contentful.com/content/v1/spaces/zvuvf4y77x2g`, //ENV???
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          preview
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`,
+        Authorization: `Bearer uvvGbLFSkRPXOH3-pURBIb2H5e4KJxWTTilhywVcA4w`, //ENV???
       },
       body: JSON.stringify({ query }),
       next: { tags: ["posts"] },
@@ -35,6 +35,10 @@ function extractPost(fetchResponse: any): any {
 function extractPostEntries(fetchResponse: any): any[] {
   return fetchResponse?.data?.pinturaCollection?.items || fetchResponse?.data?.bookCollection?.items;
 }
+function extractPostEntriesREST(fetchResponse: any): any[] {
+  console.log("AAAAAAA", fetchResponse)
+  return fetchResponse?.items || [];
+}
 
 export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
   const entry = await fetchGraphQL(
@@ -47,7 +51,7 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
     }`,
     true,
   );
-  return extractPost(entry);
+  return extractPost(await entry);
 }
 
 type CollectionType = 'book' | 'pintura';
@@ -66,7 +70,7 @@ export async function getAllPosts(isDraftMode: boolean, collectionType: Collecti
 }
 
 export async function getAllPostsREST(isDraftMode: boolean, collectionType: CollectionType): Promise<any[]> {
-  return fetch(
+  const response = await fetch(
     `https://api.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?content_type=book`,
     {
       method: "GET",
@@ -76,7 +80,14 @@ export async function getAllPostsREST(isDraftMode: boolean, collectionType: Coll
       },
       next: { tags: ["postsDemo"] },
     },
-  ).then((response) => response.json());
+  )
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status} ${response.statusText}`);
+  }
+
+  const data: any = await response.json();
+  return extractPostEntriesREST(data);;
 }
 
 

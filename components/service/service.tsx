@@ -19,23 +19,16 @@ const serviceInfo = {
 }
 
 type Post = {
-  metadata: {
-    tags: string[],
-    concepts: string[],
-  },
+  author: string;
+  excerpt: string;
+  title: string;
+  unitPrice: number;
+  coverImage: {
+    url: string;
+  };
   sys: {
     id: string,
   },
-  fields: {
-    title: string;
-    coverImage: {
-      url: string;
-    };
-    excerpt: string;
-    author: string;
-    unitPrice: number;
-    slug: string;
-  }
 };
 
 
@@ -87,12 +80,7 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
             <Modal 
               isOpen={true} 
               onClose={() => setIsModalOpen(false)}
-              imgSrc={selectedPost.coverImage.url} 
-              artworkName={selectedPost.title}
-              artistName={selectedPost.author}
-              description={selectedPost.excerpt}
-              unitPrice={selectedPost.unitPrice}
-              serviceType={serviceType}
+              selectedBook={selectedPost}
             />
         )}
     </section>

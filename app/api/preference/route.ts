@@ -3,9 +3,19 @@ import { Preference } from "mercadopago";
 
 export async function POST(req: Request): Promise<Response> {
   const requestBody = await req.json(); 
-  console.log("requestBody", requestBody)
+  const { metadata, ...items} = requestBody;
+  console.log("asd123", metadata);
+  console.log("asd123", metadata);
+  console.log("asd123", metadata);
+  console.log("asd123", metadata);
+  console.log("asd123", metadata);
+  console.log("asd123", metadata);
+  console.log("ITEMS", items);
     const body: any = {
-      "items": [ requestBody ],
+      "items": [items],
+      "metadata": {
+        "info": JSON.stringify(metadata)
+      },
       "payment_methods": {
           "excluded_payment_types": [],
           "excluded_payment_methods": [],
