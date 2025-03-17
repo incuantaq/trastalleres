@@ -20,7 +20,7 @@ async function fetchGraphQL(query: string, preview = false): Promise<any> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer uvvGbLFSkRPXOH3-pURBIb2H5e4KJxWTTilhywVcA4w`, //ENV???
+        Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`
       },
       body: JSON.stringify({ query }),
       next: { tags: ["posts"] },
