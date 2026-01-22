@@ -112,7 +112,7 @@ export async function getPostAndMorePosts(
         preview ? "true" : "false"
       }, limit: 1) {
         items {
-          ${POST_GRAPHQL_FIELDS}
+          ${FIELDS_BY_COLLECTION['book']}
         }
       }
     }`,
