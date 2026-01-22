@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidateTag } from "next/cache";
+import { revalidateTag, revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
@@ -9,7 +9,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  revalidateTag("posts");
+  try {
+    const body = await request.json();
+    const contentType = body?.sys?.contentType?.sys?.id;
 
-  return NextResponse.json({ revalidated: true, now: Date.now() });
+    // Revalidate specific tags based on content type
+    if (contentType === "book") {
+      revalidateTag("posts");
+      revalidatePath("/libreria");
+    } else if (contentType === "pintura") {
+      revalidateTag("posts");
+      revalidatePath("/galeria");
+    } else {
+      // Revalidate all tags if content type is unknown
+      revalidateTag("posts");
+      revalidateTag("postsDemo");
+      revalidatePath("/");
+      revalidatePath("/libreria");
+    }
+
+    return NextResponse.json({
+      revalidated: true,
+      contentType,
+      now: Date.now()
+    });
+  } catch (error) {
+    console.error("Revalidation error:", error);
+    return NextResponse.json(
+      { message: "Error revalidating", error: String(error) },
+      { status: 500 }
+    );
+  }
 }

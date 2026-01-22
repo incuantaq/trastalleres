@@ -5,6 +5,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 type ServiceKeys = 'libreria' | 'galeria';
 interface ModalProps {
+    serviceType: ServiceKeys;
     isOpen: boolean;
     onClose: () => void;
     /* imgSrc: string;
@@ -32,7 +33,7 @@ const whatsappItemMessage = {
 }
 
 const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
-    const { isOpen, onClose, selectedBook } = ModalProps;
+    const { isOpen, onClose, selectedBook, serviceType } = ModalProps;
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -57,42 +58,8 @@ const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
             onClose();
         }
     };
-    
-    async function createPreference() {
-        let data: any | null = null;
-        try {
-            const metadataPromise = await fetch(`/api/metadata/?id=${selectedBook.sys.id}`, {
-                method: "GET",
-              });
 
-            const preferenceMetadata = await metadataPromise.json();
-            const response = await fetch("/api/preference", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    id: "1AMgM0D8Io7LhpejVTVNUX",
-                    title: `${selectedBook.title} - ${selectedBook.author}`,
-                    quantity: 1,
-                    unit_price: 3000,
-                    description: selectedBook.excerpt,
-                    currency_id: 'COP',
-                    metadata: preferenceMetadata
-                }),
-            });
-          data = await response.json();
-          /* console.log("Preference created:", data); */
-        } catch (error) {
-          console.error("Error creating preference:", error);
-        }
-        finally {
-            if(data?.init_point)
-            window.open(data.init_point, "_blank");
-        }
-    }
-
-    const whatsappUrl = `https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20${whatsappItemMessage.libreria}%20${selectedBook.title}%0AArtist:%20${selectedBook.author}`;
+    const whatsappUrl = `https://wa.me/573102104501?text=Hola%2C%20Trastalleres!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20${whatsappItemMessage[serviceType]}%20${selectedBook.title}%0AArtist:%20${selectedBook.author}`;
 
     if (!isOpen) return null;
 
@@ -118,7 +85,6 @@ const Modal: React.FC<ModalProps> = (ModalProps: ModalProps) => {
                         <a className="contact-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                             Contacta <FontAwesomeIcon icon={faWhatsapp} />
                         </a>
-                        <button onClick={createPreference}>Mercado pago</button>
                     </section>
                 </div>
             </div>
