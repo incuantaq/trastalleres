@@ -23,6 +23,7 @@ type Post = {
   excerpt: string;
   title: string;
   unitPrice: number;
+  slug: string;
   coverImage: {
     url: string;
   };
@@ -36,8 +37,6 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
   const { serviceTitle, serviceDescription } = serviceInfo[serviceType];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
-
-  console.log("posts", posts);
 
   const openModal = (post: Post) => {
     setSelectedPost(post);
@@ -77,7 +76,8 @@ export default function Service({ posts, serviceType }: { posts: Post[] | null; 
       )}
 
         {isModalOpen && selectedPost && (
-            <Modal 
+            <Modal
+              serviceType={serviceType}
               isOpen={true} 
               onClose={() => setIsModalOpen(false)}
               selectedBook={selectedPost}

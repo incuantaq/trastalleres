@@ -1,16 +1,26 @@
 
-const POST_GRAPHQL_FIELDS = `
+const COMMON_FIELDS = `
   title
   coverImage {
     url
   }
   author
   excerpt
-  unitPrice
   sys {
     id
   }
 `;
+
+const FIELDS_BY_COLLECTION: Record<CollectionType, string> = {
+  book: `
+    ${COMMON_FIELDS}
+    unitPrice
+    slug
+  `,
+  pintura: `
+    ${COMMON_FIELDS}
+  `,
+};
 
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
@@ -45,7 +55,7 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
     `query {
       postCollection(where: { slug: "${slug}" }, preview: true, limit: 1) {
         items {
-          ${POST_GRAPHQL_FIELDS}
+          ${FIELDS_BY_COLLECTION['book']}
         }
       }
     }`,
@@ -60,7 +70,7 @@ export async function getAllPosts(isDraftMode: boolean, collectionType: Collecti
     `query {
       ${collectionType}Collection( preview: false) {
         items {
-          ${POST_GRAPHQL_FIELDS}
+          ${FIELDS_BY_COLLECTION[collectionType]}
         }
       }
     }`,

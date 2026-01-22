@@ -24,7 +24,7 @@ function PostPreview({
   return (
     <div /* onClick={onClick}  */className="inline-block my-[15px] md:m-[10px]">
       <div className="rounded-sm mb-1 md:mb-2 cursor-pointer drop-shadow-[0_10px_10px_rgba(0,0,0,0.4)] pb-1">
-        <CoverImage title={title} slug={slug} author={author} url={coverImage.url} />
+        <CoverImage title={title} slug={slug} author={author} serviceType="libreria" url={coverImage.url} />
       </div>
       <h3 className="text-xl mb-1 leading-snug cursor-pointer text-[#75103A]">
         {title}

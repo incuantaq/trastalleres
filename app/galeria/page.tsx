@@ -4,10 +4,10 @@ import MoreStories from "../../components/service/service";
 
 export const revalidate = 60; // Revalidate every 60 seconds as a fallback
 
-export default async function LibreriaPage() {
-    const posts = await getAllPosts(false, 'book');
+export default async function GaleriaPage() {
+    const paints = await getAllPosts(false, 'pintura');
 
     return (
-      <MoreStories posts={posts} serviceType='libreria' />
+      <MoreStories posts={paints} serviceType='galeria' />
     );
 }
